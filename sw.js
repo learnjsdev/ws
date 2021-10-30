@@ -1,5 +1,5 @@
-const CACHE_NAME = 'my-web-app-cache';
-const urlsToCache = [
+let CACHE_NAME = 'my-web-app-cache';
+let urlsToCache = [
   '/',
 ];
 
