@@ -13,3 +13,8 @@ self.addEventListener('fetch', (e) => {
 self.addEventListener('message', (e) => {
   console.log(e.data);
 });
+
+self.addEventListener('statechange', (e) => {
+  console.log('change');
+})
+
