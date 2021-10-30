@@ -21,6 +21,7 @@ self.addEventListener('install', function(event) {
 
 self.addEventListener('fetch', function(event) {
   console.log('fetch');
+  debugger;
   event.respondWith(
     // Этот метод анализирует запрос и
     // ищет кэшированные результаты для этого запроса в любом из
