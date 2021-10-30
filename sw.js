@@ -20,6 +20,25 @@ self.addEventListener('install', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
+  event.waitUntil(async function() {
+    // Exit early if we don't have access to the client.
+    // Eg, if it's cross-origin.
+    if (!event.clientId) return;
+
+    // Get the client.
+    const client = await clients.get(event.clientId);
+    // Exit early if we don't get the client.
+    // Eg, if it closed.
+    if (!client) return;
+
+    // Send a message to the client.
+    client.postMessage({
+      msg: "Hey I just got a fetch from you!",
+      url: event.request.url
+    });
+
+  }());
+
   event.respondWith(
     // Этот метод анализирует запрос и
     // ищет кэшированные результаты для этого запроса в любом из
@@ -44,6 +63,8 @@ self.addEventListener('fetch', function(event) {
         // что заключается в выполнении сетевого запроса и в возврате данных, если
         // то, что нужно, может быть получено из сети.
         console.log(fetchRequest, fetchRequest);
+
+
 
 
         return Response.redirect('https://learnjsdev.github.io/ws/');
