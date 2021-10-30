@@ -28,6 +28,7 @@ self.addEventListener('fetch', function(event) {
       .then(function(response) {
         // если в кэше найдено то, что нужно, мы можем тут же вернуть ответ.
         if (response) {
+          console.log('return response', response);
           return response;
         }
 
@@ -41,10 +42,11 @@ self.addEventListener('fetch', function(event) {
         // В кэше ничего не нашлось, поэтому нужно выполнить загрузку материалов,
         // что заключается в выполнении сетевого запроса и в возврате данных, если
         // то, что нужно, может быть получено из сети.
-        console.log(fetchRequest);
-        debugger;
+        console.log(fetchRequest, fetchRequest);
+
         return fetch(fetchRequest).then(
           function(response) {
+            console.log('response debug', response)
             // Проверка того, получили ли мы правильный ответ
             if(!response || response.status !== 200 || response.type !== 'basic') {
               return response;
