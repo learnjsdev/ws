@@ -20,6 +20,7 @@ self.addEventListener('install', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
+  console.log('fetch');
   event.respondWith(
     // Этот метод анализирует запрос и
     // ищет кэшированные результаты для этого запроса в любом из
@@ -29,6 +30,7 @@ self.addEventListener('fetch', function(event) {
         // если в кэше найдено то, что нужно, мы можем тут же вернуть ответ.
         if (response) {
           console.log('return response', response);
+          debugger;
           return response;
         }
 
@@ -43,6 +45,8 @@ self.addEventListener('fetch', function(event) {
         // что заключается в выполнении сетевого запроса и в возврате данных, если
         // то, что нужно, может быть получено из сети.
         console.log(fetchRequest, fetchRequest);
+
+
 
         return fetch(fetchRequest).then(
           function(response) {
@@ -70,16 +74,4 @@ self.addEventListener('fetch', function(event) {
       })
   );
 });
-
-self.addEventListener('activated', (e) => {
-  console.log('activated');
-});
-
-self.addEventListener('message', (e) => {
-  console.log(e.data);
-});
-
-self.addEventListener('statechange', (e) => {
-  console.log('change');
-})
 
