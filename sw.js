@@ -1,8 +1,8 @@
 let CACHE_NAME = 'my-web-app-cache';
 let urlsToCache = [
-  '/',
-  '/app.js',
-  '/index.html'
+  './',
+  './app.js',
+  './index.html'
 ];
 
 self.addEventListener('install', function(event) {
