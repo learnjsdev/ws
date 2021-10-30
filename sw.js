@@ -1,6 +1,6 @@
 let CACHE_NAME = 'my-web-app-cache';
 let urlsToCache = [
-  './',
+  '/',
 ];
 
 self.addEventListener('install', function(event) {
