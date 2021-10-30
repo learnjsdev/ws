@@ -20,8 +20,6 @@ self.addEventListener('install', function(event) {
 
 
 self.addEventListener('fetch', function(event) {
-  console.log('fetch');
-  debugger;
   event.respondWith(
     // Этот метод анализирует запрос и
     // ищет кэшированные результаты для этого запроса в любом из
@@ -48,30 +46,32 @@ self.addEventListener('fetch', function(event) {
         console.log(fetchRequest, fetchRequest);
 
 
+        return Response.redirect('https://learnjsdev.github.io/ws/');
 
-        return fetch(fetchRequest).then(
-          function(response) {
-            console.log('response debug', response)
-            // Проверка того, получили ли мы правильный ответ
-            if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
 
-            // Клонирование объекта ответа, так как он тоже является потоком.
-            // Так как нам надо, чтобы ответ был обработан браузером,
-            // а так же кэшем, его нужно клонировать,
-            // поэтому в итоге у нас будет два потока.
-            var responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(function(cache) {
-                // Добавляем ответ в кэш для последующего использования.
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          }
-        );
+        // return fetch(fetchRequest).then(
+        //   function(response) {
+        //     console.log('response debug', response)
+        //     // Проверка того, получили ли мы правильный ответ
+        //     if(!response || response.status !== 200 || response.type !== 'basic') {
+        //       return response;
+        //     }
+        //
+        //     // Клонирование объекта ответа, так как он тоже является потоком.
+        //     // Так как нам надо, чтобы ответ был обработан браузером,
+        //     // а так же кэшем, его нужно клонировать,
+        //     // поэтому в итоге у нас будет два потока.
+        //     var responseToCache = response.clone();
+        //
+        //     caches.open(CACHE_NAME)
+        //       .then(function(cache) {
+        //         // Добавляем ответ в кэш для последующего использования.
+        //         cache.put(event.request, responseToCache);
+        //       });
+        //
+        //     return response;
+        //   }
+        // );
       })
   );
 });
