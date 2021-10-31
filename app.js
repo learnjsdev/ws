@@ -7,6 +7,6 @@ if ('serviceWorker' in navigator) {
   });
 
   navigator.serviceWorker.addEventListener('message', (data) => {
-    console.log(data)
+    console.log(document.title)
   })
 }
