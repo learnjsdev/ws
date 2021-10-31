@@ -1,4 +1,5 @@
 self.addEventListener('fetch', (event) => {
-  console.log('fetch')
+  const url = new URL(event.request.url);
+  console.log(url.origin, location.origin)
   debugger;
 })
