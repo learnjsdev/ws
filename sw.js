@@ -15,11 +15,11 @@ self.addEventListener('fetch', (event) => {
 
         //throw Error('response status ' + response.status);
 
+        console.dir(event)
+
+        debugger
 
 
-        self.postMessage('hello');
-
-        debugger;
       }
 
       // If we got back a non-error HTTP response, return it to the page.
