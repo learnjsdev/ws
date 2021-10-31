@@ -63,5 +63,5 @@ self.addEventListener('fetch', (event) => {
   //       return response;
   //     }))
 
-  debugger;
+  ServiceWorkerRegistration.active.postMessage('123')
 })
