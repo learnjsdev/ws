@@ -5,4 +5,8 @@ if ('serviceWorker' in navigator) {
     }).catch((error) => {
     console.log('Registration failed with ' + error);
   });
+
+  navigator.serviceWorker.addEventListener('message', (data) => {
+    console.log(data)
+  })
 }
