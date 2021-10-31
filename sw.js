@@ -54,12 +54,14 @@ self.addEventListener('fetch', (event) => {
     // }());
 
 
-  event.respondWith(
-      fetch(event.request).then(function(response) {
-        if (!response.ok) {
-          console.log('404', response)
-        }
-        console.log('base', response);
-        return response;
-      }))
+  // event.respondWith(
+  //     fetch(event.request).then(function(response) {
+  //       if (!response.ok) {
+  //         console.log('404', response)
+  //       }
+  //       console.log('base', response);
+  //       return response;
+  //     }))
+
+  debugger;
 })
