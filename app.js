@@ -1,12 +1,14 @@
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./sw.js')
-    .then((response) => {
-      return response
-    }).catch((error) => {
-    console.log('Registration failed with ' + error);
-  });
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw.js');
 
-  navigator.serviceWorker.addEventListener('message', (data) => {
-    console.log(document.title)
-  });
+    navigator.serviceWorker.addEventListener('message', event => {
+      console.log(`message: ${event.data}`);
+    });
+
+    navigator.serviceWorker.ready.then( registration => {
+      registration.active.postMessage("register service worker");
+    });
+
+  })
 }
