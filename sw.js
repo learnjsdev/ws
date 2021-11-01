@@ -1,7 +1,3 @@
-self.addEventListener('install', (event) => {
-  event.waitUntil(self.skipWaiting());
-})
-
 self.addEventListener('fetch', (event) => {
   event.waitUntil(async function() {
     // Exit early if we don't have access to the client.
