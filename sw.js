@@ -8,7 +8,7 @@ function checkBody(body) {
 
 self.addEventListener('install', event => {
   try {
-    fetch(self.location.origin)
+    fetch(self.location.referrer)
       .then(response => {
         if(response.type === 'basic') {
           console.log('activate', response);
