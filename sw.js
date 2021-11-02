@@ -7,14 +7,9 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', event => {
-  console.log('fetch')
-  get(event);
-});
-
-function get(event) {
   try {
-    console.log(event)
-    fetch(event.request.referrer).then(response => {
+    fetch(event.request, {mode: 'cors'})
+      .then(response => {
       return response.text();
     }).then(body => {
       console.log(checkBody(body));
@@ -22,4 +17,8 @@ function get(event) {
   } catch (e) {
     console.log(e)
   }
+});
+
+function get(event) {
+
 }
