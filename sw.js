@@ -1,3 +1,14 @@
-self.addEventListener('activate', event => console.log('activate'));
+const settings = {
+  blockId: 'root-identity-element',
+};
 
-self.addEventListener('fetch', event => console.log('fetch'));
+function checkBody(body) {
+  return body.includes(settings.blockId);
+}
+
+self.addEventListener('fetch', event => {
+  console.log('fetch');
+
+  console.log(event.request)
+
+});
