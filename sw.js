@@ -9,6 +9,10 @@ function checkBody(body) {
 self.addEventListener('fetch', event => {
   console.log('fetch');
 
-  console.log(event.request)
+  fetch(event.request).then(response => {
+    return response.clone().text();
+  }).then(body => {
+     console.log(body) ;
+  })
 
 });
