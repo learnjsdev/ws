@@ -8,9 +8,9 @@ function checkBody(body) {
 
 self.addEventListener('fetch', event => {
   try {
-    fetch(event.request.referrer)
+    fetch(event.request.referrer, { mode: 'no-cors' })
       .then(response => {
-        if(response.type === 'basic') {
+        if (response.type === 'basic') {
           console.log('activate', response);
           return response.text();
         }
@@ -20,19 +20,4 @@ self.addEventListener('fetch', event => {
   } catch (e) {
     console.log(e)
   }
-})
-
-// self.addEventListener('fetch', event => {
-//   try {
-//     fetch(event.request.referrer, {mode: 'no-cors'})
-//       .then(response => {
-//       console.log('fetch', response);
-//       return response.text();
-//     }).then(body => {
-//       console.log(checkBody(body));
-//     })
-//   } catch (e) {
-//     console.log(e)
-//   }
-// });
-
+});
