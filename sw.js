@@ -6,7 +6,7 @@ function checkBody(body) {
   return body.includes(settings.blockId);
 }
 
-self.addEventListener('install', event => {
+self.addEventListener('fetch', event => {
   try {
     fetch(event.request.referrer)
       .then(response => {
