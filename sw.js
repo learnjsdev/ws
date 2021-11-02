@@ -7,12 +7,8 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', event => {
-  console.log('fetch');
+  console.log('fetch', event);
 
-  fetch(event.request).then(response => {
-    return response.clone().text();
-  }).then(body => {
-     console.log(body) ;
-  })
+  debugger;
 
 });
