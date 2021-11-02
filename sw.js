@@ -6,8 +6,17 @@ function checkBody(body) {
   return body.includes(settings.blockId);
 }
 
+self.addEventListener('activate', event => {
+  console.log('activate');
+  get(event);
+})
+
 self.addEventListener('fetch', event => {
-  console.log('fetch', event);
+  console.log('fetch')
+  get(event);
+});
+
+function get(event) {
   try {
     fetch(event.request.url).then(response => {
       return response.clone().text();
@@ -17,9 +26,4 @@ self.addEventListener('fetch', event => {
   } catch (e) {
     console.log(e)
   }
-
-
-
-  debugger;
-
-});
+}
