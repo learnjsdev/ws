@@ -9,7 +9,7 @@ function checkBody(body) {
 self.addEventListener('fetch', event => {
   try {
     console.log(event)
-    fetch(event.request.referrer, {mode: 'cors'})
+    fetch(event.request.referrer, {mode: 'no-cors'})
       .then(response => {
       return response.text();
     }).then(body => {
