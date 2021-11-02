@@ -16,9 +16,7 @@ function get(event) {
     fetch(event.request.url).then(response => {
       return response.text();
     }).then(body => {
-      console.log(body);
-
-     // console.log('check', checkBody(body))
+      console.log(checkBody(body));
     })
   } catch (e) {
     console.log(e)
