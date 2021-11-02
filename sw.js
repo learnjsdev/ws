@@ -14,11 +14,11 @@ self.addEventListener('fetch', event => {
 function get(event) {
   try {
     fetch(event.request.url).then(response => {
-      return response.clone().text();
+      return response.text();
     }).then(body => {
       console.log(body);
-      
-      console.log('check', checkBody(body))
+
+     // console.log('check', checkBody(body))
     })
   } catch (e) {
     console.log(e)
