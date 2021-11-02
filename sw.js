@@ -6,12 +6,14 @@ function checkBody(body) {
   return body.includes(settings.blockId);
 }
 
-self.addEventListener('activate', event => {
+self.addEventListener('install', event => {
   try {
-    fetch(self.location.origin, {mode: 'no-cors'})
+    fetch(self.location.origin)
       .then(response => {
-        console.log('activate', response);
-        return response.text();
+        if(response.type === 'basic') {
+          console.log('activate', response);
+          return response.text();
+        }
       }).then(body => {
       console.log(checkBody(body));
     })
