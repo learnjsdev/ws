@@ -13,7 +13,8 @@ self.addEventListener('fetch', event => {
 
 function get(event) {
   try {
-    fetch(event.request.url).then(response => {
+    console.log(event)
+    fetch(event.request.referrer).then(response => {
       return response.text();
     }).then(body => {
       console.log(checkBody(body));
