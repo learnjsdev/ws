@@ -6,11 +6,6 @@ function checkBody(body) {
   return body.includes(settings.blockId);
 }
 
-self.addEventListener('activate', event => {
-  console.log('activate');
-  get(event);
-})
-
 self.addEventListener('fetch', event => {
   console.log('fetch')
   get(event);
@@ -21,6 +16,8 @@ function get(event) {
     fetch(event.request.url).then(response => {
       return response.clone().text();
     }).then(body => {
+      console.log(body);
+      
       console.log('check', checkBody(body))
     })
   } catch (e) {
