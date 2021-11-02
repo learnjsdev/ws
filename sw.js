@@ -11,12 +11,11 @@ self.addEventListener('fetch', event => {
     fetch(event.request.referrer, { mode: 'no-cors' })
       .then(response => {
         if (response.type === 'basic') {
-          console.log('activate', response);
-          return response.text();
+          console.log('response', response);
+          const body =  response.clone().text();
+          console.log('check', checkBody(body))
         }
-      }).then(body => {
-      console.log(checkBody(body));
-    })
+      })
   } catch (e) {
     console.log(e)
   }
