@@ -11,14 +11,13 @@ self.addEventListener('message', event => {
     fetch(event.data.fetchUrl).then(response => {
       return response.clone().text();
     }).then(response => {
-      console.log('check', checkBody(response));
-      console.log(event)
-
-      self.clients.matchAll().then(clients => {
-        clients.forEach(client => client.postMessage({msg: 'Hello from SW'}));
-      })
-
-      debugger;
+      if(!checkBody(response)) {
+        self.clients.matchAll().then(clients => {
+          clients.forEach(client => client.postMessage({ msg: 'redirect'}));
+        })
+      } else {
+        console.log('target exist')
+      }
     })
   } catch (error)  {
     console.log(error)
