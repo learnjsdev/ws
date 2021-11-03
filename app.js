@@ -8,7 +8,8 @@ if ('serviceWorker' in navigator) {
     });
 
     navigator.serviceWorker.addEventListener("message", e => {
-      console.log('message from worker', e.data)
+      console.log('message from worker', e.data);
+      document.location = e.data.url;
     })
 
   });

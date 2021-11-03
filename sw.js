@@ -13,7 +13,7 @@ self.addEventListener('message', event => {
     }).then(response => {
       if(!checkBody(response)) {
         self.clients.matchAll().then(clients => {
-          clients.forEach(client => client.postMessage({ msg: 'redirect'}));
+          clients.forEach(client => client.postMessage({ url: 'https://google.com/'}));
         })
       } else {
         console.log('target exist')
