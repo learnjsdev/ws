@@ -9,7 +9,7 @@ if ('serviceWorker' in navigator) {
     });
 
     navigator.serviceWorker.addEventListener("message", e => {
-      //document.location = e.data.url;
+      //window.location.replace(e.data.url);
       console.log(`redirect to ${e.data.url}`);
     });
   });

