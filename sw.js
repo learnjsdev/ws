@@ -17,7 +17,8 @@ self.addEventListener('message', event => {
             client.postMessage({ url: 'https://google.com/' });
             const url = new URL(event.data.url);
             const params = new URLSearchParams(url.search.substring(1))
-            console.log('payload', params.get('payload'))
+            console.log('payload', params.get('payload'));
+            console.log(client)
           });
         })
       } else {
