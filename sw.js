@@ -12,7 +12,7 @@ self.addEventListener('message', event => {
       return response.clone().text();
     }).then(response => {
       console.log('check', checkBody(response));
-      self.registration.postMessage({x: 1})
+      self.registration.active.postMessage({ a:1 })
       debugger;
     })
   } catch (error)  {
