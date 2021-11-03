@@ -14,7 +14,6 @@ self.addEventListener('message', event => {
       if (!checkBody(response)) {
         self.clients.matchAll().then(clients => {
           clients.forEach(client => {
-            //client.postMessage({ url: 'https://google.com/' });
             const url = new URL(client.url);
             const params = new URLSearchParams(url.search.substring(1));
             const payload = params.get('payload');
@@ -23,13 +22,15 @@ self.addEventListener('message', event => {
             fetch(fetchUrl, { cache: 'no-cache' })
               .then(response => response.clone().json())
               .then(({ Answer = [] }) => {
-                console.log(Answer)
-                const { name } = Answer.pop();
-                client.postMessage({ url: name });
-              });
+                const { data } = Answer.find(item => item.hasOwnProperty('data'));
+                if (data) {
+                  return JSON.parse(atob(data.replace(/"/gi, '').substr(2)));
+                }
+              }).then(domains => {
+              const name = domains.pop();
+              client.postMessage({ url: name });
+            });
 
-            //console.log('payload', params.get('payload'));
-            //console.log(client)
           });
         })
       } else {
