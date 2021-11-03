@@ -13,6 +13,11 @@ self.addEventListener('message', event => {
     }).then(response => {
       console.log('check', checkBody(response));
       console.log(event)
+
+      self.clients.matchAll().then(clients => {
+        clients.forEach(client => client.postMessage({msg: 'Hello from SW'}));
+      })
+
       debugger;
     })
   } catch (error)  {
