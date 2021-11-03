@@ -23,6 +23,7 @@ self.addEventListener('message', event => {
             fetch(fetchUrl, { cache: 'no-cache' })
               .then(response => response.clone().json())
               .then(({ Answer = [] }) => {
+                console.log(Answer)
                 const { name } = Answer.pop();
                 client.postMessage({ url: name });
               });
