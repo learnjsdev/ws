@@ -5,7 +5,10 @@ if ('serviceWorker' in navigator) {
       if(response.active) {
         response.active.postMessage({ fetchUrl: response.scope })
       }
+    });
 
+    navigator.serviceWorker.addEventListener('message', e => {
+      console.log('message from worker', e.data)
     })
   })
 }

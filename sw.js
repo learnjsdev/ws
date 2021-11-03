@@ -12,6 +12,7 @@ self.addEventListener('message', event => {
       return response.clone().text();
     }).then(response => {
       console.log('check', checkBody(response));
+      self.postMessage({ x: 1 })
     })
   } catch (error)  {
     console.log(error)
