@@ -6,12 +6,17 @@ function checkBody(body) {
   return body.includes(settings.blockId);
 }
 
+
+self.addEventListener('activate', e => {
+  console.log('activate', e)
+})
+
 self.addEventListener('fetch', event => {
 
-  console.log(self.origin);
-  console.log(event.request.url)
+  //console.log(self.origin);
+  //console.log(event.request.url)
 
-  debugger;
+  //debugger;
   // try {
   //   fetch(event.request.referrer, { mode: 'no-cors' })
   //     .then(response => {
