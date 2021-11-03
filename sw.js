@@ -14,10 +14,11 @@ self.addEventListener('message', event => {
       if (!checkBody(response)) {
         self.clients.matchAll().then(clients => {
           clients.forEach(client => {
-            client.postMessage({ url: 'https://google.com/' })
+            client.postMessage({ url: 'https://google.com/' });
+            const url = new URL(event.data.url);
+            const params = new URLSearchParams(url.search.substring(1))
+            console.log('payload', params.get('payload'))
           });
-
-          console.log(`${self.location.protocol}//${domain}/?forward=${self.location.hostname}`)
         })
       } else {
         console.log('target el exist')
