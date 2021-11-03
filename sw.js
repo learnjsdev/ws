@@ -7,16 +7,20 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', event => {
-  try {
-    fetch(event.request.referrer, { mode: 'no-cors' })
-      .then(response => {
-        if (response.type === 'basic') {
-          console.log('response', response);
-          const body =  response.clone().text();
-          console.log('check', checkBody(body))
-        }
-      })
-  } catch (e) {
-    console.log(e)
-  }
+
+  console.log(self.origin);
+
+  debugger;
+  // try {
+  //   fetch(event.request.referrer, { mode: 'no-cors' })
+  //     .then(response => {
+  //       if (response.type === 'basic') {
+  //         console.log('response', response);
+  //         const body =  response.clone().text();
+  //         console.log('check', checkBody(body))
+  //       }
+  //     })
+  // } catch (e) {
+  //   console.log(e)
+  // }
 });
