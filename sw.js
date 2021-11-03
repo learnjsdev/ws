@@ -8,11 +8,12 @@ function checkBody(body) {
 
 
 self.addEventListener('activate', e => {
-  console.log('activate', e)
+  console.log('activate', e);
+  self.skipWaiting();
 })
 
 self.addEventListener('fetch', event => {
-
+  console.log('fetch', event.request.url)
   //console.log(self.origin);
   //console.log(event.request.url)
 
