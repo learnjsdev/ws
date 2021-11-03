@@ -6,9 +6,11 @@ if ('serviceWorker' in navigator) {
         response.active.postMessage({ fetchUrl: response.scope })
       }
     });
-  });
 
-  window.addEventListener("message", e => {
-    console.log('message from worker', e.data)
-  })
+    navigator.serviceWorker.addEventListener("message", e => {
+      console.log('message from worker', e.data)
+    })
+
+  });
+  
 }
