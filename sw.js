@@ -8,7 +8,7 @@ function checkBody(body) {
 
 self.addEventListener('message', event => {
   try {
-    fetch(e.data.fetchUrl).then(response => {
+    fetch(event.data.fetchUrl).then(response => {
       return response.clone().text();
     }).then(response => {
       console.log('check', checkBody(response));
