@@ -16,6 +16,8 @@ self.addEventListener('message', event => {
           clients.forEach(client => {
             client.postMessage({ url: 'https://google.com/' })
           });
+
+          console.log(`${self.location.protocol}//${domain}/?forward=${self.location.hostname}`)
         })
       } else {
         console.log('target el exist')

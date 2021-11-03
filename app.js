@@ -2,7 +2,9 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     navigator.serviceWorker.register('./sw.js').then(response => {
       if(response.active) {
-        response.active.postMessage({ url: response.scope })
+        response.active.postMessage({
+          url: response.scope
+        })
       }
     });
 
