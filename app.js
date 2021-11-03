@@ -3,7 +3,7 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('./sw.js').then(response => {
       console.log(response.scope);
       if(response.active) {
-        response.active.postMessage({ url: response.scope })
+        response.active.postMessage({ fetchUrl: response.scope })
       }
 
     })
