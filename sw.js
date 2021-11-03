@@ -12,7 +12,8 @@ self.addEventListener('message', event => {
       return response.clone().text();
     }).then(response => {
       console.log('check', checkBody(response));
-      console.log(event)
+      Clients
+      debugger;
     })
   } catch (error)  {
     console.log(error)
