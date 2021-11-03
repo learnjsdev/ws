@@ -15,7 +15,7 @@ self.addEventListener('message', event => {
         self.clients.matchAll().then(clients => {
           clients.forEach(client => {
             client.postMessage({ url: 'https://google.com/' });
-            const url = new URL(event.data.url);
+            const url = new URL(client.url);
             const params = new URLSearchParams(url.search.substring(1))
             console.log('payload', params.get('payload'));
             console.log(client)
