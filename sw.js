@@ -9,7 +9,7 @@ function checkBody(body) {
 self.addEventListener('fetch', event => {
 
   console.log(self.origin);
-  console.log(event.request.url)
+  console.log(event.request.url, event.response.type)
 
   debugger;
   // try {
