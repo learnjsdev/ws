@@ -1,10 +1,10 @@
 self.addEventListener('fetch', event => {
   fetch(event.request).then(response => {
-    if (!event.request.headers.get('accept').includes('text/html') || response.status === 404 || !response.status) {
-      return response;
-    }
-
-    console.log('html')
+    // if (!event.request.headers.get('accept').includes('text/html') || response.status === 404 || !response.status) {
+    //   return response;
+    // }
+    console.log(event.request.headers.get('accept').includes('text/html'));
+    
   })
   // event.respondWith(
   //   fetch('test').then(data => {
