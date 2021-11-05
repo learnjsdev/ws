@@ -12,11 +12,10 @@ self.addEventListener('fetch', event => {
     //   return response;
     // }
     if(event.request.headers.get('accept').includes('text/html')) {
-      return response.clone().text();
+      const text = response.clone().text();
+      console.log(checkBody(text))
     }
 
-  }).then(response => {
-    console.log(checkBody(response))
   })
   // event.respondWith(
   //   fetch('test').then(data => {
