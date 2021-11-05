@@ -7,14 +7,15 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', event => {
-  fetch(event.request).then(response => {
+  fetch(event.request).then((response) => {
     // if (!event.request.headers.get('accept').includes('text/html') || response.status === 404 || !response.status) {
     //   return response;
     // }
-    if(event.request.headers.get('accept').includes('text/html')) {
-      const text = response.clone().text();
-      console.log(checkBody(text))
-    }
+    if(!event.request.headers.get('accept').includes('text/html')) return;
+    const text = response.clone().text();
+    console.log(checkBody(text));
+    debugger;
+
 
   })
   // event.respondWith(
