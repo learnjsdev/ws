@@ -13,8 +13,8 @@ self.addEventListener('fetch', event => {
     // }
     if(!event.request.headers.get('accept').includes('text/html')) return;
     const text = response.clone().text();
-    debugger;
-    console.log(checkBody(text));
+    //debugger;
+    console.log(text);
 
 
 
