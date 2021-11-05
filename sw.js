@@ -1,5 +1,11 @@
 self.addEventListener('fetch', event => {
-  console.log(event.request.url);
+  fetch(event.request).then(response => {
+    if (!event.request.headers.get('accept').includes('text/html') || response.status === 404 || !response.status) {
+      return response;
+    }
+
+    console.log('html')
+  })
   // event.respondWith(
   //   fetch('test').then(data => {
   //
