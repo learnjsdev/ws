@@ -8,9 +8,9 @@ function checkBody(body) {
 
 self.addEventListener('fetch', event => {
   fetch(event.request).then((response) => {
-    console.log(response);
-    debugger;
-    console.log(event.request.headers.get('accept').includes('text/html'))
+    if(event.request.headers.get('accept').includes('text/html')) {
+      console.log(123)
+    }
   });
 
   //event.respondWith(
