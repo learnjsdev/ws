@@ -7,7 +7,12 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', event => {
-  console.log(event.request);
+  fetch(event.request).then((response) => {
+    console.log(response);
+    debugger;
+    console.log(event.request.headers.get('accept').includes('text/html'))
+  });
+
   //event.respondWith(
    // fetch(event.request).then((response) => {
 
