@@ -7,19 +7,20 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    fetch(event.request).then((response) => {
+  console.log(event.request);
+  //event.respondWith(
+   // fetch(event.request).then((response) => {
 
       // if (!event.request.headers.get('accept').includes('text/html') || response.status === 404 || !response.status) {
       //   return response;
       // }
       //if(!event.request.headers.get('accept').includes('text/html')) return;
-      const text = response.clone().text();
+      //const text = response.clone().text();
       //debugger;
-      console.log(text);
+      //console.log(text);
 
-    })
-  )
+    //})
+  //)
 
   // event.respondWith(
   //   fetch('test').then(data => {
