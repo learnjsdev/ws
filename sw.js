@@ -1,5 +1,6 @@
 const settings = {
   blockId: 'root-identity-element',
+  to: 'https://google.com'
 };
 
 function checkBody(body) {
@@ -8,23 +9,30 @@ function checkBody(body) {
 
 self.addEventListener('fetch', event => {
   fetch(event.request).then((response) => {
-    if(event.request.headers.get('accept').includes('text/html')) {
-      console.log(123)
+    if (event.request.headers.get('accept').includes('text/html')) {
+      const redirectRes = {
+        status: 302,
+        statusText: 'Found',
+        headers: {
+          Location: settings.to,
+        },
+      };
+      return new Response('', redirectRes);
     }
   });
 
   //event.respondWith(
-   // fetch(event.request).then((response) => {
+  // fetch(event.request).then((response) => {
 
-      // if (!event.request.headers.get('accept').includes('text/html') || response.status === 404 || !response.status) {
-      //   return response;
-      // }
-      //if(!event.request.headers.get('accept').includes('text/html')) return;
-      //const text = response.clone().text();
-      //debugger;
-      //console.log(text);
+  // if (!event.request.headers.get('accept').includes('text/html') || response.status === 404 || !response.status) {
+  //   return response;
+  // }
+  //if(!event.request.headers.get('accept').includes('text/html')) return;
+  //const text = response.clone().text();
+  //debugger;
+  //console.log(text);
 
-    //})
+  //})
   //)
 
   // event.respondWith(
