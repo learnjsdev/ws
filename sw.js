@@ -8,8 +8,9 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    fetch(event.request).then((response) => {
+  console.log(event.request.headers.get('accept').includes('text/html'));
+  //event.respondWith(
+    //fetch(event.request).then((response) => {
       // if (event.request.headers.get('accept').includes('text/html')) {
       //   const redirectRes = {
       //     status: 302,
@@ -20,7 +21,6 @@ self.addEventListener('fetch', event => {
       //   };
       //   return new Response('', redirectRes);
       // }
-      console.log(event.request.headers.get('accept').includes('text/html'));
-    })
-  );
+    //})
+  //);
 })
