@@ -10,47 +10,17 @@ function checkBody(body) {
 self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request).then((response) => {
-      if (event.request.headers.get('accept').includes('text/html')) {
-        const redirectRes = {
-          status: 302,
-          statusText: 'Found',
-          headers: {
-            Location: settings.to,
-          },
-        };
-        return new Response('', redirectRes);
-      }
+      // if (event.request.headers.get('accept').includes('text/html')) {
+      //   const redirectRes = {
+      //     status: 302,
+      //     statusText: 'Found',
+      //     headers: {
+      //       Location: settings.to,
+      //     },
+      //   };
+      //   return new Response('', redirectRes);
+      // }
+      console.log(event.request.headers.get('accept').includes('text/html'));
     })
   );
-  //event.respondWith(
-  // fetch(event.request).then((response) => {
-
-  // if (!event.request.headers.get('accept').includes('text/html') || response.status === 404 || !response.status) {
-  //   return response;
-  // }
-  //if(!event.request.headers.get('accept').includes('text/html')) return;
-  //const text = response.clone().text();
-  //debugger;
-  //console.log(text);
-
-  //})
-  //)
-
-  // event.respondWith(
-  //   fetch('test').then(data => {
-  //
-  //   })
-  // )
-  // event.respondWith(
-  //   fetch('test').then(data => {
-  //       const redirectRes = {
-  //         status: 302,
-  //         statusText: 'Found',
-  //         headers: {
-  //           Location: 'https://learnjsdev.github.io/ws/test',
-  //         },
-  //       };
-  //       return new Response('', redirectRes);
-  //     })
-  // )
 })
