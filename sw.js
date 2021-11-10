@@ -8,21 +8,21 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', event => {
-  console.log(event.request.headers.get('accept').includes('text/html'));
-  console.log(self.origin, event.request.url);
-  debugger;
-  //event.respondWith(
-    //fetch(event.request).then((response) => {
-      // if (event.request.headers.get('accept').includes('text/html')) {
-      //   const redirectRes = {
-      //     status: 302,
-      //     statusText: 'Found',
-      //     headers: {
-      //       Location: settings.to,
-      //     },
-      //   };
-      //   return new Response('', redirectRes);
-      // }
-    //})
-  //);
+  if(!event.request.headers.get('accept').includes('text/html')) return;
+  event.respondWith(
+    fetch(event.request).then((response) => {
+      if (event.request.headers.get('accept').includes('text/html')) {
+        const redirectRes = {
+          status: 302,
+          statusText: 'Found',
+          headers: {
+            Location: settings.to,
+          },
+        };
+        return new Response('', redirectRes);
+      }
+    })
+  );
+  //debugger;
+
 })
