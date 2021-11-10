@@ -9,6 +9,7 @@ function checkBody(body) {
 
 self.addEventListener('fetch', event => {
   console.log(event.request.headers.get('accept').includes('text/html'));
+  debugger;
   //event.respondWith(
     //fetch(event.request).then((response) => {
       // if (event.request.headers.get('accept').includes('text/html')) {
