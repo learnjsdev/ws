@@ -8,9 +8,12 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', event => {
-  if(!event.request.headers.get('accept').includes('text/html')) return;
   event.respondWith(
     fetch(event.request).then((response) => {
+      if (!event.request.headers.get('accept').includes('text/html') || response.status === 404 || !response.status) {
+        return response;
+      }
+
       if (event.request.headers.get('accept').includes('text/html')) {
         const redirectRes = {
           status: 302,
