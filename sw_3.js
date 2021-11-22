@@ -8,11 +8,11 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', (event) => {
-  if (event.request.destination !== 'document') return;
-  debugger;
-  event.respondWith(
-    fetch(event.request).then((res) => {
-      console.log(event.request);
-    })
-  )
+  if (event.request.destination === 'document') {
+    event.respondWith(
+      fetch(event.request).then((res) => {
+        console.log(event.request);
+      })
+    )
+  }
 });
