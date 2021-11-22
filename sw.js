@@ -13,6 +13,8 @@ self.addEventListener('fetch', event => {
 
       event.request.url
 
+      debugger;
+
       // if (event.request.headers.get('accept').includes('text/html')) {
       //   const body = response.text();
       //   const proceed = checkBody(body);
