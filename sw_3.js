@@ -14,10 +14,22 @@ self.addEventListener('fetch', (event) => {
       fetch(event.request).then(resp => {
         return resp.clone().text();
       }).then(data => {
-        console.log(data);
-        debugger;
+
+        if(data && !checkBody(data)) {
+            const redirectRes = {
+              status: 302,
+              statusText: 'Found',
+              headers: {
+                Location: settings.to,
+              },
+            };
+
+            return new Response('', redirectRes);
+        }
+
       })
     )
+
   }
 
   //debugger;
