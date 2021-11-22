@@ -8,11 +8,15 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', (event) => {
-  console.log(event.request);
-  debugger;
-  event.respondWith(
-    fetch(event.request).then((res) => {
-      console.log(event.request)
-    })
-  )
+  // if(event.request.headers.get('accept').includes('text/html')) {
+  //
+  // }
+
+  console.log(event.request.headers.get('accept'))
+
+  // event.respondWith(
+  //   fetch(event.request).then((res) => {
+  //     console.log(event.request)
+  //   })
+  // )
 });
