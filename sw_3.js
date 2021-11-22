@@ -9,6 +9,7 @@ function checkBody(body) {
 
 self.addEventListener('fetch', (event) => {
   if(event.request.destination === 'document') {
+    console.log(event.request)
     event.respondWith(
       fetch(event.request).then(resp => {
         return resp.clone().text();
