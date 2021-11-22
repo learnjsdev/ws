@@ -9,11 +9,10 @@ function checkBody(body) {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.destination === 'document') {
-    // event.respondWith(
-    //   fetch(event.request).then((res) => {
-    //     console.log(event.request);
-    //   })
-    // )
-    console.log(123)
+    event.respondWith(
+      fetch(event.request).then(resp => {
+        console.log(resp.clone().text());
+      })
+    );
   }
 });
