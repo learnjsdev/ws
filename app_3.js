@@ -1,18 +1,7 @@
-const settings = {
-  blockId: 'root-identity-element',
-  to: 'https://google.com'
-};
-
-function checkBody(body) {
-  return body.includes(settings.blockId);
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('./sw_3.js').then(response => {
+      console.log('register')
+    });
+  });
 }
-
-self.addEventListener('fetch', event => {
-  console.log(event.request);
-  debugger;
-  event.respondWith(
-    fetch(event.request).then((res) => {
-       console.log(event.request)
-    })
-  )
-})
