@@ -11,7 +11,9 @@ self.addEventListener('fetch', (event) => {
   if (event.request.destination === 'document') {
     event.respondWith(
       fetch(event.request).then(resp => {
-        console.log(resp.clone().text());
+        return resp.clone().text();
+      }).then(data => {
+        console.log(data)
       })
     );
   }
