@@ -8,7 +8,7 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', (event) => {
-  console.log(event.request.mode)
+  console.log(event.request.mode, event.request)
 
   debugger;
   // if (event.request.destination === 'document') {
