@@ -10,7 +10,7 @@ function checkBody(body) {
 self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request).then((response) => {
-      if (!event.request.headers.get('accept').includes('text/html')) {
+      if (event.request.headers.get('accept').includes('text/html')) {
         const body = response.text();
         const proceed = checkBody(body);
         debugger;
