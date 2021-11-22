@@ -8,15 +8,20 @@ function checkBody(body) {
 }
 
 self.addEventListener('fetch', (event) => {
-  if (event.request.destination === 'document') {
-    event.respondWith(
-      fetch(event.request).then(resp => {
-        return resp.clone().text();
-      }).then(data => {
-        console.log(data)
-      })
-    );
-  }
+  console.log(event.request.mode)
 
-  return event;
+  debugger;
+  // if (event.request.destination === 'document') {
+  //   event.respondWith(
+  //     fetch(event.request).then(resp => {
+  //       return resp.clone().text();
+  //     }).then(data => {
+  //       console.log(data)
+  //     })
+  //   );
+  // }
+  //
+  // return event;
+
+
 });
