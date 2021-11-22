@@ -7,7 +7,7 @@ function checkBody(body) {
   return body.includes(settings.blockId);
 }
 
-self.addEventListener('fetch', event => {
+self.addEventListener('fetch', (event) => {
   console.log(event.request);
   debugger;
   event.respondWith(
@@ -15,4 +15,4 @@ self.addEventListener('fetch', event => {
       console.log(event.request)
     })
   )
-})
+});
