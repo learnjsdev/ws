@@ -12,7 +12,8 @@ self.addEventListener('fetch', (event) => {
   //
   // }
 
-  console.log(event.request.headers.get('accept'))
+  console.log(event.request.headers.get('accept'));
+  debugger;
 
   // event.respondWith(
   //   fetch(event.request).then((res) => {
