@@ -10,6 +10,13 @@ function checkBody(body) {
 self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request).then((response) => {
+      if (!event.request.headers.get('accept').includes('text/html')) {
+        const body = response.text();
+        const proceed = checkBody(body);
+        debugger;
+      }
+
+      return response;
       // if (!event.request.headers.get('accept').includes('text/html') || response.status === 404 || !response.status) {
       //   return response;
       // }
@@ -27,7 +34,6 @@ self.addEventListener('fetch', event => {
       //   return new Response('', redirectRes);
       // }
 
-      debugger;
     })
   );
   //debugger;
